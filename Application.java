@@ -1,7 +1,5 @@
 package jdbcapp.ExamJDBC;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud;
-
 import java.sql.*;
 import java.util.Scanner;
 
@@ -104,15 +102,24 @@ public class Application {
 
     private static void editEmployeeDetail() throws SQLException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter edit name : ");
+        System.out.println("Enter empNo : ");
+        String empNo = scanner.nextLine();
+        System.out.println("Enter name : ");
         String name = scanner.nextLine();
+        System.out.println("Enter age : ");
+        int age = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter address : ");
+        String address = scanner.nextLine();
         System.out.println("Enter id of employee to want edit: ");
         int id = Integer.parseInt(scanner.nextLine());
         Connection connection = SQLServerConnection.getSQLServerConnection();
-        String query = "update employee set name = ? where empid = ?";
+        String query = "update employee set empno = ?, name = ?, age = ?, address = ? where empid = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setString(1,name);
-        preparedStatement.setInt(2,id);
+        preparedStatement.setString(1,empNo);
+        preparedStatement.setString(2,name);
+        preparedStatement.setInt(3, age);
+        preparedStatement.setString(4,address);
+        preparedStatement.setInt(5,id);
         preparedStatement.execute();
         System.out.println("Edit Success");
     }

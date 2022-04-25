@@ -27,12 +27,11 @@ public class SQLServerConnection {
         Connection connection = DriverManager.getConnection(connectionString, userName,password);
         return connection;
     }
-
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-
-        Connection connection = getSQLServerConnection();
-        if(connection!=null){
-            System.out.println("Ket noi CSDL thanh cong");
-        }
-    }
+//    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+//
+//        Connection connection = getSQLServerConnection();
+//        if(connection!=null){
+//            System.out.println("Ket noi CSDL thanh cong");
+//        }
+//    }
 }
